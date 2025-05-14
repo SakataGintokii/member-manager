@@ -5,17 +5,14 @@
 
     <b-form @submit.prevent="handleSubmit" class="w-50 mx-auto">
 
-      <!-- 姓名 -->
       <b-form-group label="姓名" label-for="name">
         <b-form-input id="name" v-model="member.name" placeholder="請輸入姓名" required />
       </b-form-group>
 
-      <!-- Email -->
       <b-form-group label="Email" label-for="email">
         <b-form-input id="email" v-model="member.email" type="email" placeholder="請輸入 Email" required />
       </b-form-group>
 
-      <!-- 電話（重點欄位）-->
       <b-form-group label="電話" label-for="phone">
         <b-form-input id="phone" v-model="member.phone" type="tel" placeholder="請輸入電話" :state="isPhoneValid" required />
         <b-form-invalid-feedback>
@@ -44,7 +41,6 @@ const member = ref({
   phone: ''
 })
 
-//  手機格式驗證：09 開頭，共 10 碼
 const phonePattern = /^09\d{8}$/
 const isPhoneValid = computed(() => phonePattern.test(member.value.phone))
 

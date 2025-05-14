@@ -6,7 +6,7 @@
     <div class="d-flex gap-2 mb-3 align-items-center">
       <b-button variant="primary" @click="router.push('/add')">新增會員</b-button>
 
-      <!-- 下載檔案表單（含提示選項） -->
+      <!-- 下載檔案表單 -->
       <b-form @submit.prevent="submitDownload" class="d-flex gap-2 align-items-center">
         <b-form-select v-model="selectedDownloadFile" :options="downloadFileList" class="w-auto" placeholder="請選擇檔案" />
         <b-button type="submit" variant="outline-success" :disabled="!selectedDownloadFile">下載</b-button>
@@ -74,13 +74,13 @@ const filteredMembers = computed(() =>
 )
 
 const fetchMembers = async () => {
-  const res = await axios.get('http://localhost:8080/members/getall')
+  const res = await axios.get<Member[]>('http://localhost:8080/members/getall')
   members.value = res.data
 }
 
 const fetchDownloadList = async () => {
   try {
-    const res = await axios.get('http://localhost:8080/file/list')
+    const res = await axios.get<string[]>('http://localhost:8080/file/list')
     console.log("下載清單", res.data)
     downloadFileList.value = res.data
   } catch (e) {
@@ -107,7 +107,7 @@ const uploadData = async () => {
 const submitDownload = async () => {
   const fileName = selectedDownloadFile.value
   try {
-    const res = await axios.get(`http://localhost:8080/file/download/${fileName}`, {
+    const res = await axios.get<Blob>(`http://localhost:8080/file/download/${fileName}`, {
       responseType: 'blob'
     })
     const url = window.URL.createObjectURL(new Blob([res.data]))
