@@ -1,0 +1,43 @@
+# ===  macOS 系統檔案 ===
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ===  Node.js 相依與 build ===
+node_modules/
+dist/
+dist-ssr/
+output/
+coverage/
+temp/
+.cache/
+*.log
+
+# ===  Vite / Vue CLI 快取輸出 ===
+.vite/
+.vitepress/dist
+*.local
+
+# ===  環境設定檔（local）===
+.env
+.env.*.local
+
+# ===  IDE / Editor 設定 ===
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.code-workspace
+
+# ===  測試輸出 / patch / lock ===
+*.test.js
+*.patch
+*.lock
+pnpm-debug.log*
+yarn-debug.log*
+npm-debug.log*

@@ -1,0 +1,63 @@
+# === Java / Spring Boot build ===
+target/
+out/
+*.class
+*.jar
+*.war
+*.ear
+
+# === Gradle ===
+.gradle/
+build/
+!gradle-wrapper.jar
+
+# === Maven ===
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# === Logs ===
+*.log
+*.err
+
+# === IDEs / Editors ===
+.idea/
+*.iml
+.vscode/
+.project
+.settings
+*.sublime-project
+*.sublime-workspace
+.nb-gradle/
+
+# === OS generated files (macOS) ===
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+.fseventsd
+.TemporaryItems
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+Icon?
+
+# === Temporary files / swap / patch ===
+*.swp
+*.swo
+*.vi
+*~
+*.orig
+*.rej
+*.diff
+
+# === Environment variables ===
+.env
