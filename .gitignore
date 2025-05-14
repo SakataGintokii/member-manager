@@ -1,0 +1,103 @@
+# === 前端 Vue 專案：member_vue_final ===
+member_vue_final/node_modules/
+member_vue_final/dist/
+member_vue_final/dist-ssr/
+member_vue_final/output/
+member_vue_final/coverage/
+member_vue_final/temp/
+member_vue_final/.cache/
+member_vue_final/.vite/
+member_vue_final/.vitepress/dist
+member_vue_final/*.log
+member_vue_final/pnpm-debug.log*
+member_vue_final/yarn-debug.log*
+member_vue_final/npm-debug.log*
+member_vue_final/*.test.js
+member_vue_final/*.patch
+member_vue_final/*.lock
+
+# 環境變數檔（Local）
+member_vue_final/.env
+member_vue_final/.env.*.local
+
+# 前端 IDE 設定
+member_vue_final/.idea/
+member_vue_final/.vscode/
+member_vue_final/*.suo
+member_vue_final/*.ntvs*
+member_vue_final/*.njsproj
+member_vue_final/*.sln
+member_vue_final/*.code-workspace
+
+# === 後端 Spring Boot 專案：member_springboot_final ===
+member_springboot_final/target/
+member_springboot_final/out/
+member_springboot_final/*.class
+member_springboot_final/*.jar
+member_springboot_final/*.war
+member_springboot_final/*.ear
+
+# Gradle
+member_springboot_final/.gradle/
+member_springboot_final/build/
+!member_springboot_final/gradle-wrapper.jar
+
+# Maven
+member_springboot_final/.mvn/
+member_springboot_final/pom.xml.tag
+member_springboot_final/pom.xml.releaseBackup
+member_springboot_final/pom.xml.versionsBackup
+member_springboot_final/pom.xml.next
+member_springboot_final/release.properties
+
+# Logs
+member_springboot_final/*.log
+member_springboot_final/*.err
+
+# IDEs / Editors
+member_springboot_final/.idea/
+member_springboot_final/.vscode/
+member_springboot_final/*.iml
+member_springboot_final/.project
+member_springboot_final/.settings
+member_springboot_final/*.sublime-project
+member_springboot_final/*.sublime-workspace
+member_springboot_final/.nb-gradle/
+
+# Environment variables
+member_springboot_final/.env
+
+# === 通用忽略項目 ===
+
+# macOS 系統檔案（整個專案都會產生）
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+.fseventsd
+.TemporaryItems
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+Icon?
+
+# 編輯器 / IDE
+.idea/
+.vscode/
+
+# 暫存檔 / Swap / Patch
+*.swp
+*.swo
+*.vi
+*~
+*.orig
+*.rej
+*.diff
+
+
