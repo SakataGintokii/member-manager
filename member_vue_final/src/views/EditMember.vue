@@ -23,7 +23,7 @@
           required
         />
         <b-form-invalid-feedback>
-          電話格式錯誤，必須是 09 開頭的 10 位數字
+          電話號碼必須是 09 開頭的 10 位數字
         </b-form-invalid-feedback>
       </b-form-group>
 
