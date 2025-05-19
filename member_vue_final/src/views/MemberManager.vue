@@ -6,9 +6,13 @@
     <div class="d-flex gap-2 mb-3 align-items-center">
       <b-button variant="primary" @click="router.push('/add')">新增會員</b-button>
 
-      <!-- 下載檔案表單 -->
       <b-form @submit.prevent="submitDownload" class="d-flex gap-2 align-items-center">
-        <b-form-select v-model="selectedDownloadFile" :options="downloadFileList" class="w-auto" placeholder="請選擇檔案" />
+        <b-form-select
+          v-model="selectedDownloadFile"
+          :options="downloadFileList"
+          class="w-auto"
+          placeholder="請選擇檔案"
+        />
         <b-button type="submit" variant="outline-success" :disabled="!selectedDownloadFile">下載</b-button>
       </b-form>
     </div>
@@ -17,16 +21,39 @@
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
       <!-- 上傳檔案表單 -->
       <b-form @submit.prevent="uploadData" class="d-flex flex-row gap-2 align-items-center">
-        <b-form-file v-model="selectedFile" accept="*/*" browse-text="選擇檔案" class="w-auto" />
+        <b-form-file
+          v-model="selectedFile"
+          accept="*/*"
+          browse-text="選擇檔案"
+          class="w-auto"
+        />
         <b-button type="submit" variant="success">上傳</b-button>
       </b-form>
 
-      <!-- 查詢欄 -->
-      <b-form-input v-model="searchKeyword" placeholder="請輸入關鍵字查詢" class="w-25" />
+      <!-- 查詢欄 + 按鈕 -->
+      <div class="d-flex align-items-center gap-2" style="min-width: 300px;">
+        <!-- 查詢欄 -->
+        <div class="flex-grow-1">
+          <b-form-input
+            v-model="searchKeyword"
+            placeholder="請輸入關鍵字查詢"
+          />
+        </div>
+
+        <!-- 查詢按鈕 -->
+        <b-button variant="primary" @click="handleSearch">查詢</b-button>
+      </div>
     </div>
 
     <!-- 表格 -->
-    <b-table :items="filteredMembers" :fields="fields" striped hover responsive="sm" thead-class="text-center">
+    <b-table
+      :items="filteredMembers"
+      :fields="fields"
+      striped
+      hover
+      responsive="sm"
+      thead-class="text-center"
+    >
       <template #cell(actions)="row">
         <div class="text-center">
           <b-button size="sm" variant="info" class="me-2" @click="editMember(row.item)">編輯</b-button>
@@ -38,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
@@ -52,6 +79,7 @@ interface Member {
 }
 
 const members = ref<Member[]>([])
+const filteredMembers = ref<Member[]>([])  // 改為 ref，初始為空
 const searchKeyword = ref('')
 const selectedFile = ref<File | null>(null)
 const selectedDownloadFile = ref('')
@@ -65,17 +93,20 @@ const fields = [
   { key: 'actions', label: '操作', thClass: 'text-center uniform-col', tdClass: 'text-center uniform-col' }
 ]
 
-const filteredMembers = computed(() =>
-  members.value.filter(member =>
-    member.name.toLowerCase().includes(searchKeyword.value.toLowerCase()) ||
-    member.email.toLowerCase().includes(searchKeyword.value.toLowerCase()) ||
-    member.phone.toLowerCase().includes(searchKeyword.value.toLowerCase())
+// 查詢按鈕觸發過濾
+const handleSearch = () => {
+  const keyword = searchKeyword.value.toLowerCase()
+  filteredMembers.value = members.value.filter(member =>
+    member.name.toLowerCase().includes(keyword) ||
+    member.email.toLowerCase().includes(keyword) ||
+    member.phone.toLowerCase().includes(keyword)
   )
-)
+}
 
 const fetchMembers = async () => {
   const res = await axios.get<Member[]>('http://localhost:8080/members/getall')
   members.value = res.data
+  filteredMembers.value = res.data  // 初始顯示全部資料
 }
 
 const fetchDownloadList = async () => {

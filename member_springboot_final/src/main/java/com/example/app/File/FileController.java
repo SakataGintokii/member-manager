@@ -41,7 +41,7 @@ public class FileController {
             Path path = Paths.get(uploadDir.getAbsolutePath(), fileName);
             file.transferTo(path.toFile());
 
-            System.out.println("成功儲存檔案：" + path.toAbsolutePath()); // ✅ 列印儲存路徑
+            System.out.println("成功儲存檔案：" + path.toAbsolutePath()); //  列印儲存路徑
 
             return ResponseEntity.ok("上傳成功: " + fileName);
         } catch (Exception e) {

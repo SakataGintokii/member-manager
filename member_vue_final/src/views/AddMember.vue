@@ -44,7 +44,7 @@ const member = ref({
 const phonePattern = /^09\d{8}$/
 const isPhoneValid = computed(() => phonePattern.test(member.value.phone))
 
-//  提交表單（含前端驗證）
+//  提交表單
 const handleSubmit = async () => {
   if (!isPhoneValid.value) {
     alert('請輸入有效的手機號碼(09 開頭，共 10 碼)')
